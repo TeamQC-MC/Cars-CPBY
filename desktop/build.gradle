@@ -1,0 +1,7 @@
+apply plugin: "application"
+
+mainClassName = "qc.aeonis.cars.DesktopLauncher"
+
+run {
+    workingDir = file("../assets")
+}

@@ -1,0 +1,5 @@
+[lang]
+en,ENGLISH
+
+[urls]
+portal=http://r.i-mania.de/redir.lm?GID=137&ID=162
