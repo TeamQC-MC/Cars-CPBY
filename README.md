@@ -1,5 +1,7 @@
 # Cars J2ME Reloaded (Remaster)
 
+<img src="image.png" width="300" alt="Demo screenshot from the experimental stage of the game shot on 21st May">
+
 A high-fidelity clean-room remaster of the legacy J2ME racing game "Cars", modernized for Java 25 and LibGDX.
 
 ## Overview
