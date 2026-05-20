@@ -9,11 +9,14 @@ public class CarsGame extends Game {
     @Override
     public void create() {
         batch = new SpriteBatch();
+        Settings.load();
+        FontManager.init();
         setScreen(new LoadingScreen(this));
     }
 
     @Override
     public void dispose() {
         batch.dispose();
+        FontManager.dispose();
     }
 }

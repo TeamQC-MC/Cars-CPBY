@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 public class InputHandler extends InputAdapter {
     public static boolean up, down, left, right, fire, back, menu;
     public static int mouseX, mouseY;
+    public static float worldX, worldY;
     public static boolean isTouched;
 
     @Override
@@ -47,7 +48,7 @@ public class InputHandler extends InputAdapter {
                 menu = isPressed;
                 break;
             case Keys.BACKSPACE:
-            case Keys.DEL:
+            case Keys.FORWARD_DEL:
                 back = isPressed;
                 break;
         }

@@ -17,18 +17,26 @@ public class TrackData {
     }
 
     private void load(String filename) {
+        Gdx.app.log("TrackData", "Loading " + filename);
         try (InputStream is = Gdx.files.internal(filename).read()) {
             byte[][] parts = parseBinary(is);
             if (parts != null && parts.length >= 3) {
                 this.width = parts[0][0] & 0xFF;
+                if (this.width == 0) {
+                    Gdx.app.error("TrackData", "Width is 0 in " + filename);
+                    return;
+                }
                 this.mapData = parts[1];
                 this.height = mapData.length / width;
                 this.waypointData = parts[2];
+                Gdx.app.log("TrackData", "Loaded " + filename + ": " + width + "x" + height);
                 
                 // Adjust map data as per original logic if needed
                 if (id != 3) {
                     applyMapFixes();
                 }
+            } else {
+                Gdx.app.error("TrackData", "Invalid parts in " + filename + " (count: " + (parts != null ? parts.length : "null") + ")");
             }
         } catch (Exception e) {
             Gdx.app.error("TrackData", "Failed to load " + filename, e);

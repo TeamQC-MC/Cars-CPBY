@@ -3,7 +3,6 @@ package qc.aeonis.cars;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.io.InputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -33,7 +32,6 @@ public class SpriteManager {
             return tex;
         }
         
-        // Try .img extension if not in AssetManager (or we could add a loader for .img)
         filename = id + ".img";
         if (Gdx.files.internal(filename).exists()) {
             try (InputStream is = Gdx.files.internal(filename).read()) {
@@ -42,6 +40,7 @@ public class SpriteManager {
                     Pixmap pm = new Pixmap(parts[0], 0, parts[0].length);
                     tex = new Texture(pm);
                     pm.dispose();
+                    tex.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                     textureCache.put(id, tex);
                     return tex;
                 }
@@ -68,6 +67,10 @@ public class SpriteManager {
     }
     
     public static int getTextureId(int frameId) {
+        // User confirmed 12.png has every movement tile.
+        // Let's force all frames in car range to 12.
+        if (frameId >= 301 && frameId <= 356) return 12;
+        
         // Ported logic from Sprite.method_307
         if (frameId < 21) return 1;
         if (frameId < 32) return 27;

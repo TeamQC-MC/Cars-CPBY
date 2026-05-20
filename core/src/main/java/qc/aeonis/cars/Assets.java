@@ -2,14 +2,12 @@ package qc.aeonis.cars;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 
 public class Assets {
     private static AssetManager manager = new AssetManager();
 
     public static void load() {
-        // Load all known PNG textures
         String[] textures = {
             "0.png", "1.png", "11.png", "12.png", "2.png", "21.png", 
             "23.png", "27.png", "28.png", "3.png", "30.png", "31.png", 
@@ -20,8 +18,6 @@ public class Assets {
         for (String tex : textures) {
             manager.load(tex, Texture.class);
         }
-        
-        // Add MIDI (audio/music) loading later if we convert them or use a MIDI lib
     }
 
     public static float getProgress() {
@@ -29,7 +25,18 @@ public class Assets {
     }
 
     public static boolean update() {
-        return manager.update();
+        boolean loaded = manager.update();
+        if (loaded) {
+            // Force Nearest filtering for all textures once loaded to fix blurriness
+            com.badlogic.gdx.utils.Array<String> assetNames = manager.getAssetNames();
+            for (String name : assetNames) {
+                if (manager.getAssetType(name) == Texture.class) {
+                    Texture tex = manager.get(name, Texture.class);
+                    tex.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+                }
+            }
+        }
+        return loaded;
     }
 
     public static <T> T get(String name, Class<T> type) {
