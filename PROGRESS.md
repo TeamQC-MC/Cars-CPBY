@@ -65,4 +65,4 @@
 - [ ] **UI Refinement**: Reduce HUD text size (currently too large) and add more vibrant race-day UI.
 
 ---
-*Updated on 2026-05-20 by Gemini CLI*
+*Updated on 2026-05-20 by Cdx CLI*

@@ -49,5 +49,3 @@ This project transitions the original 240x320 keypad-mobile experience into a mo
 - `remaster/assets/`: Migrated and reverse-engineered original game resources.
 - `remaster/PROGRESS.md`: Detailed technical memory dump and reverse-engineering findings.
 
----
-**Remastered with ❤️ by Gemini CLI**
