@@ -1,0 +1,23 @@
+.gradle/
+assets/
+build/
+legacy/
+core/bin/
+core/build/
+desktop/bin/
+desktop/build/
+dist/
+remaster/
+portal__en.txt
+portal_en.txt
+text__en.txt
+text_en.txt
+gradle.zip
+
+# Local toolchains / embedded repos (too large to vendor; use LFS or submodules instead)
+tools/jdk8/
+tools/jdk8.tar.gz
+tools/j2me/
+tools/j2me-wrapper-linux/
+build_run.log
+build.log
